@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Global Style Sheets
+   ========================================================================== */
+
+:root {
+  /* Design System Colors */
+  --bg-page: #FDFCF9;            /* Warm Off-White */
+  --bg-card: #F4EFE6;            /* Warm Cream Card */
+  --accent-blue: #0A4ABF;        /* Classic Editorial Blue */
+  --border-blue: rgba(10, 74, 191, 0.25);
+  --border-blue-hover: rgba(10, 74, 191, 0.6);
+  
+  /* Text Colors */
+  --text-primary: #1A1A1A;
+  --text-secondary: #4A4A4A;
+  
+  /* Transitions */
+  --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  /* Use Next.js Google font variables or standard system fallbacks */
+  font-family: var(--font-sans), 'Inter', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
