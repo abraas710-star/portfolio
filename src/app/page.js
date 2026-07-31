@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -16,29 +17,46 @@ export default function Home() {
 
       {/* Main Hero Container */}
       <main className={styles.heroContainer}>
-        {/* Beige Rounded Card Container */}
-        <div className={styles.glassCard}>
-          {/* Header Block (Now inside the card) */}
-          <div className={styles.headerBlock}>
-            <p className={styles.introPrefix}>Hay, I Am</p>
-            <h1 className={styles.mainTitle}>
-              <span>Abra</span>
-              <span>Creative</span>
-            </h1>
-          </div>
+        {/* Left Column (Card & Content) */}
+        <div className={styles.cardRelativeWrapper}>
+          {/* Beige Rounded Card Container */}
+          <div className={styles.glassCard}>
+            {/* Header Block (Positioned inside the card) */}
+            <div className={styles.headerBlock}>
+              <p className={styles.introPrefix}>Hay, I Am</p>
+              <h1 className={styles.mainTitle}>
+                <span>Abra</span>
+                <span>Creative</span>
+              </h1>
+            </div>
 
-          {/* Description Block */}
-          <div className={styles.descriptionBlock}>
-            <p className={styles.descriptionText}>
-              An AI Content Creator, Video Creator, and Social Media Marketing Strategist Turning Ideas into Powerful AI-Driven Content.
-            </p>
+            {/* Description Block */}
+            <div className={styles.descriptionBlock}>
+              <p className={styles.descriptionText}>
+                An AI Content Creator, Video Creator, and Social Media Marketing Strategist Turning Ideas into Powerful AI-Driven Content.
+              </p>
+            </div>
+            
+            {/* Action Button */}
+            <a href="#portfolio" className={styles.ctaButton}>
+              <span>View Portfolio</span>
+              <span className={styles.ctaArrow}>→</span>
+            </a>
           </div>
-          
-          {/* Action Button */}
-          <a href="#portfolio" className={styles.ctaButton}>
-            <span>View Portfolio</span>
-            <span className={styles.ctaArrow}>→</span>
-          </a>
+        </div>
+
+        {/* Right Column (Grayscale Blended Photo) */}
+        <div className={styles.imageContainer}>
+          <div className={styles.profileImageWrapper}>
+            <Image
+              src="/profile.jpg"
+              alt="Abra - AI Content Creator & Marketing Strategist"
+              width={600}
+              height={700}
+              priority
+              className={styles.profileImage}
+            />
+          </div>
         </div>
       </main>
 

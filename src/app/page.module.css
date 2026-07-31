@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Page Module CSS - Centered Hero Section (Without Photo)
+   Page Module CSS - Split Hero Section with Image & Integrated Card Text
    ========================================================================== */
 
 .pageWrapper {
@@ -52,28 +52,37 @@
   color: var(--accent-blue);
 }
 
-/* Centered Hero Layout */
+/* Split Column Hero Layout */
 .heroContainer {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
   margin: auto;
   position: relative;
   padding: 4rem 0;
+  gap: 2rem;
 }
 
-/* Beige Card Container */
+/* Left Card Structure */
+.cardRelativeWrapper {
+  position: relative;
+  width: 100%;
+}
+
 .glassCard {
   background-color: var(--bg-card);
   border-radius: 40px;
-  padding: 5rem 4.5rem;
+  padding: 4.5rem;
   width: 100%;
+  min-height: 480px;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem; /* Clean vertical spacing between blocks */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.015);
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
   position: relative;
   z-index: 2;
   opacity: 0;
@@ -98,7 +107,7 @@
 
 .mainTitle {
   font-family: var(--font-serif), Georgia, serif;
-  font-size: 5.5rem; /* Adjusted for centered container balance */
+  font-size: 5rem; /* Large serif title size */
   font-weight: 400;
   line-height: 0.9;
   color: var(--accent-blue);
@@ -112,13 +121,13 @@
 
 /* Description Block inside Card */
 .descriptionBlock {
-  max-width: 620px;
+  max-width: 480px;
   animation: fadeIn 1s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s forwards;
 }
 
 .descriptionText {
   font-family: var(--font-serif), Georgia, serif;
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   line-height: 1.35;
   color: var(--accent-blue);
   font-weight: 400;
@@ -126,13 +135,12 @@
 
 /* CTA Outline Button */
 .ctaButton {
-  align-self: flex-start;
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   border: 1px solid var(--border-blue);
   border-radius: 9999px;
-  padding: 0.9rem 2.2rem;
+  padding: 0.9rem 2rem;
   font-family: var(--font-sans), sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
@@ -160,6 +168,46 @@
 
 .ctaButton:hover .ctaArrow {
   transform: translateX(4px);
+}
+
+/* Right Column Profile Image container */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 620px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 4;
+}
+
+.profileImageWrapper {
+  position: absolute;
+  bottom: -40px;
+  right: -20px;
+  width: 105%;
+  height: 700px;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  filter: grayscale(100%) contrast(1.1) brightness(1.02);
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  transition: filter 0.6s ease;
+  pointer-events: auto;
+}
+
+.profileImage:hover {
+  filter: grayscale(0%) contrast(1) brightness(1);
 }
 
 /* Footer Section */
@@ -218,6 +266,21 @@
 }
 
 /* Responsive Rules */
+@media (max-width: 1100px) {
+  .pageWrapper {
+    padding: 2rem;
+  }
+  
+  .mainTitle {
+    font-size: 4.5rem;
+  }
+  
+  .profileImageWrapper {
+    height: 600px;
+    bottom: -20px;
+  }
+}
+
 @media (max-width: 860px) {
   .pageWrapper {
     padding: 1.5rem;
@@ -233,6 +296,8 @@
   }
 
   .heroContainer {
+    grid-template-columns: 1fr;
+    gap: 3rem;
     padding: 2rem 0;
   }
   
@@ -243,11 +308,29 @@
   .glassCard {
     padding: 3rem 2rem;
     border-radius: 30px;
+    min-height: auto;
     gap: 2rem;
   }
   
   .descriptionText {
     font-size: 1.45rem;
+  }
+  
+  .imageContainer {
+    height: 400px;
+    order: -1;
+  }
+  
+  .profileImageWrapper {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .profileImage {
+    object-fit: contain;
   }
 
   .footer {
